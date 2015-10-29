@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Levenshtein Guesser</title>
+
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="./targetWord.js"></script>
+  <script src="./distanceCalculator.js"></script>
+  <script src="./app.js"></script>
+
+</head>
+<body>
+<div class="container">
+<h1>Welcome to the Levenshtein Distance Game</h1>
+
+<div class = 'game-description'>
+  <span>Guess the word if you can!</span>
+  <span class= 'detail'>Edit distance is calculated using 
+    <a target="_blank" href="https://en.wikipedia.org/wiki/Levenshtein_distance">
+      Levenshtein Distance
+    </a>
+  </span>
+  <span class='hints'></span>
+  <span id='turn'>0</span>
+</div>
+
+<div class="game-play">
+  <div id="game" style="display:block">
+    <input  type="text" />
+    <button id="guess">guess</button>
+    <button id="give-up">give up</button>
+  </div>
+  <div id="game-loss" style="display:none"></div>
+  <div id="game-win" style="display:none"></div>
+  <button id="new-game">new game</button>
+</div>
+
+<table id="guesses-table">
+  <thead>
+    <tr>
+      <th>Guess</th>
+      <th>Distance</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+</div>
+<script>
+  $(function(){
+    gameStart();
+    $('#game > input').focus();
+    $('.hints').append("hint: " + hints.join(' '));
+
+
+    //event listeners
+      //guess
+    $( "#guess" ).on('click', function(e) {
+      var guess = getGuess($('#game > input').val());
+
+      // if you win
+      if(guess.guessedCorrectly){
+        var answear = getGuess('i give up');
+        $('#game-win').html("<span class='game-over'>You won! The winning word was: <span class='answear'>" + answear.target + "</span> </span>");
+        $('#game').hide();
+        $('#game-win').show();
+        $('#game > input').val('').focus();
+        return;
+      }
+
+      $('#guesses-table > tbody:last')
+        .prepend('<tr><td>'+guess.guess+'</td><td>'+guess.distance+'</td>');
+
+      $('#turn').html("" + guess.turn);
+      
+      //clear form value for next guess
+      $('#game > input').val('').focus();
+    });
+    
+    $(document).keypress(function(e){
+    if (e.which == 13){
+        $("#guess").click();
+    }
+      //give up
+    $( "#give-up" ).on('click', function(e) {
+      var answear = getGuess('i give up');
+      $('#game-loss').html("<span class='game-over'>You quit! The winning word was: <span class='answear'>" + answear.target + "</span> </span>");
+      $('#game').hide();
+      $('#game-loss').show();
+    });
+
+      //new game
+     $( "#new-game" ).on('click', function(e) {
+      location.reload();
+    });
+
+});
+
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+h1, .game-description, .game-play {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+}
+
+.game-play {
+  margin-top: 20px
+}
+h1 {
+  font-size:30px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  
+}
+
+.game-description {
+  margin-top: 10px;
+}
+.game-description span {
+  display: block;
+  padding: 3px;
+  font-size: 20px;
+  font-style: italic;
+}
+.game-description .detail {
+  display: block;
+  padding: 3px;
+  font-size: 10px;
+  color:grey;
+  font-style: italic;
+  margin-top: 5px;
+  margin-bottom: 10px
+}
+
+table {
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+}
+
+table .turn {
+  color: grey;
+  font-size: 12px;
+  padding: 1px;
+  margin: 0;
+}
+
+th, tr, td {
+  padding:5px;
+  border-bottom: 1px solid grey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+button {
+  padding-left:4px;
+  padding-right:4px;
+  margin:4px;
+  /*color: #28aadc;*/
+  background-color: #fff;
+  border: 2px solid green;
+  border-radius: 4px;
+}
+
+input {
+  padding-left:4px;
+  padding-right:4px;
+  margin:4px;
+  margin-right:10px;
+  /*color: #28aadc;*/
+  background-color: #fff;
+  border: 2px solid grey;
+  border-radius: 4px;
+}
+
+#game-win, #game-loss {
+  font-size: 30px
+}
+
+#game-win .answear {
+  color:green;
+}
+
+#game-loss .answear {
+  color:red;
+}
+
+
+.hints {
+  color: green;
+  margin-bottom: 10px;
+}
+
+#new-game {
+  margin-top: 15px
+}
+
