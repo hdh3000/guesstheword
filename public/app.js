@@ -16,3 +16,33 @@ var gameStart = function(){
       console.log(hints);
 };
 
+var handleGuess = function(guess) {
+  guessObj = getGuess(guess);
+  
+  // if winning guess
+  if(guessObj.guessedCorrectly){
+    var answear = getGuess('i give up');
+    $('#game-win').html("<span class='game-over'>You won! The winning word was: <span class='answear'>" + answear.target + "</span> </span>");
+    $('#game').hide();
+    $('#game-win').show();
+    $('#game > input').val('').focus();
+    return;
+  }
+
+  //append the guess object to table
+  $('#guesses-table > tbody:last')
+    .prepend('<tr><td>'+guessObj.guess+'</td><td>'+guess.distance+'</td>');
+
+  //update the turn value
+  $('#turn').html("" + guessObj.turn);
+  
+  //clear form value for next guess
+  $('#game > input').val('').focus();
+};
+
+var handleGiveUp = function() {
+  var answear = getGuess('i give up');
+  $('#game-loss').html("<span class='game-over'>You quit! The winning word was: <span class='answear'>" + answear.target + "</span> </span>");
+  $('#game').hide();
+  $('#game-loss').show();
+};

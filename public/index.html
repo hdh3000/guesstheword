@@ -56,52 +56,26 @@
     $('#game > input').focus();
     $('.hints').append("hint: " + hints.join(' '));
 
-
-    //event listeners
-      //guess
+    //guess
     $( "#guess" ).on('click', function(e) {
-      var guess = getGuess($('#game > input').val());
-
-      // if you win
-      if(guess.guessedCorrectly){
-        var answear = getGuess('i give up');
-        $('#game-win').html("<span class='game-over'>You won! The winning word was: <span class='answear'>" + answear.target + "</span> </span>");
-        $('#game').hide();
-        $('#game-win').show();
-        $('#game > input').val('').focus();
-        return;
-      }
-
-      $('#guesses-table > tbody:last')
-        .prepend('<tr><td>'+guess.guess+'</td><td>'+guess.distance+'</td>');
-
-      $('#turn').html("" + guess.turn);
-      
-      //clear form value for next guess
-      $('#game > input').val('').focus();
+      handleGuess($('#game > input').val());
     });
     
     $(document).keypress(function(e){
     if (e.which == 13){
         $("#guess").click();
     }
-      //give up
+    //give up
     $( "#give-up" ).on('click', function(e) {
-      var answear = getGuess('i give up');
-      $('#game-loss').html("<span class='game-over'>You quit! The winning word was: <span class='answear'>" + answear.target + "</span> </span>");
-      $('#game').hide();
-      $('#game-loss').show();
+      handleGiveUp();
     });
 
-      //new game
+    //new game
      $( "#new-game" ).on('click', function(e) {
       location.reload();
     });
-
-});
-
   });
-
+});
 </script>
 </body>
 </html>
