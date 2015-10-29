@@ -30,7 +30,7 @@ var handleGuess = function(guess) {
 
   //append the guess object to table
   $('#guesses-table > tbody:last')
-    .prepend('<tr><td>'+guessObj.guess+'</td><td>'+guess.distance+'</td>');
+    .prepend('<tr><td>'+guessObj.guess+'</td><td>'+guessObj.distance+'</td>');
 
   //update the turn value
   $('#turn').html("" + guessObj.turn);
