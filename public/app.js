@@ -13,7 +13,6 @@ var gameStart = function(){
           i++;
         }
       }
-      console.log(hints);
 };
 
 var handleGuess = function(guess) {
