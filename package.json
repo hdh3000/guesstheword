@@ -11,5 +11,8 @@
     "start": "node app.js"
   },
   "author": "hdh3000",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
