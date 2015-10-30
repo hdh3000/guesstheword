@@ -6,7 +6,8 @@
 
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="./targetWord.js"></script>
+  <script src="./words.js"></script>
+  <script src="./utilities.js"></script>
   <script src="./distanceCalculator.js"></script>
   <script src="./app.js"></script>
 
@@ -50,32 +51,9 @@
 
 </div>
 <script>
-  $(function(){
-    gameStart();
-    $('#game > input').focus();
-    $('.hints').append("hint: " + hints.join(' '));
-
-    //guess
-    $( "#guess" ).on('click', function(e) {
-      handleGuess($('#game > input').val());
-    });
-    
-    $(document).keypress(function(e){
-    if (e.which == 13){
-        $("#guess").click();
-    }
-    
-    //give up
-    $( "#give-up" ).on('click', function(e) {
-      handleGiveUp();
-    });
-
-    //new game
-     $( "#new-game" ).on('click', function(e) {
-      location.reload();
-    });
+  $(function(){ 
+    app(); 
   });
-});
 </script>
 </body>
 </html>
