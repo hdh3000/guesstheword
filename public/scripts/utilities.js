@@ -1,11 +1,16 @@
 //utilities
 var handleGuess = function(guess) {
   guessObj = getGuess(guess);
-  
+
   // check if winning guess
   if(guessObj.guessedCorrectly){
     giveWin();
   }
+
+  guessStack.unshift(guess);
+
+  //reset position of pointer to top of stack
+  guessStackPointer = 0;
 
   //append the guess object to table
   $('#guesses-table > tbody:last')
@@ -13,7 +18,7 @@ var handleGuess = function(guess) {
 
   //update the turn value
   $('#turn').html("" + guessObj.turn);
-  
+
   //clear form value for next guess
   $('#game > input').val('').focus();
 };
@@ -52,3 +57,18 @@ var getHints = function(word){
   return hints.join(' , ');
 };
 
+var getPrevGuess = function(){
+  $('#game > input').val(guessStack[guessStackPointer]);
+  if(guessStackPointer < guessStack.length - 1){
+    guessStackPointer++;
+  }
+};
+
+var getNextGuess = function(){
+  if(guessStackPointer > 0) {
+    guessStackPointer--;
+    $('#game > input').val(guessStack[guessStackPointer]);
+  } else {
+    $('#game > input').val('');
+  }
+};

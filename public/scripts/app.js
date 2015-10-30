@@ -1,6 +1,8 @@
 //globals
 var getGuess;
 var hints = [];
+var guessStack = [];
+var guessStackPointer = 0;
 
 //game state
 var gameStart = function () {
@@ -10,7 +12,7 @@ var gameStart = function () {
   var test = new RegExp('^' + target + '$','i');
   //setup hints
   hints = getHints(target);
-  
+
   //set up closure variables
   var turn = 0;
   var gaveUp = false;
@@ -23,9 +25,9 @@ var gameStart = function () {
       guessedCorrectly = true;
     }
     return {
-      guess: guess, 
-      distance: getEditDistance(target,guess), 
-      turn: turn, 
+      guess: guess,
+      distance: getEditDistance(target,guess),
+      turn: turn,
       guessedCorrectly: guessedCorrectly,
       target : target
     };
@@ -41,13 +43,21 @@ var app = function(){
     $( "#guess" ).on('click', function(e) {
       handleGuess($('#game > input').val());
     });
-    
-    $(document).keypress(function(e){
+
+    $(document).keydown(function(e){
       if (e.which == 13){
-          $("#guess").click();
+        $("#guess").click();
+      }
+      if (e.which == 38){
+        e.preventDefault();
+        getPrevGuess();
+      }
+      if (e.which == 40){
+        e.preventDefault();
+        getNextGuess();
       }
     });
-    
+
     //give up
     $( "#give-up" ).on('click', function(e) {
       handleGiveUp();
@@ -56,7 +66,7 @@ var app = function(){
     //new game
     $( "#new-game" ).on('click', function(e) {
       location.reload();
-    });    
+    });
 
 };
 
