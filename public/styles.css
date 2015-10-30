@@ -48,11 +48,16 @@ table {
 }
 
 
-h1, .game-description, .game-play {
+h1, .game-description, .game-play, .social {
   text-align: center;
   margin: auto;
   width: 80%;
 }
+
+.social {
+  margin-top:  20px
+}
+
 
 .game-play {
   margin-top: 20px
@@ -81,6 +86,7 @@ h1 {
   color:grey;
   font-style: italic;
 }
+
 
 table {
   text-align: center;

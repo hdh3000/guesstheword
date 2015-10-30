@@ -7,7 +7,7 @@ var gameStart = function () {
   //select random word
   var target = words[Math.floor(Math.random()*words.length)];
   //ignores case in match
-  var test = new RegExp(target,'i');
+  var test = new RegExp('^' + target + '$','i');
   //setup hints
   hints = getHints(target);
   
