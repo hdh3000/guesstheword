@@ -35,7 +35,7 @@ var gameStart = function () {
 var app = function(){
     getGuess = gameStart();
     $('#game > input').focus();
-    $('.hints').append("hint: " + hints.join(' '));
+    $('.hints').append(hints);
 
     //guess
     $( "#guess" ).on('click', function(e) {

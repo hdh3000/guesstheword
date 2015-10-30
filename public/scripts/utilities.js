@@ -23,6 +23,7 @@ var handleGiveUp = function() {
   $('#game-loss').html("<span class='game-over'>You quit! The winning word was: <span class='answear'>" + target.target + "</span> </span>");
   $('#game').hide();
   $('#game-loss').show();
+  $('#new-game').show();
 };
 
 var giveWin = function(){
@@ -31,7 +32,7 @@ var giveWin = function(){
   $('#game').hide();
   $('#game-win').show();
   $('#game > input').val('').focus();
-  return;
+  $('#new-game').show();
 };
 
 var getHints = function(word){
@@ -39,14 +40,15 @@ var getHints = function(word){
   var hint;
   var i = 0;
 
-  while(i < 3){
-    hint = word[Math.floor(Math.random()*word.length)];
+  //if we ever have short words, this has to know to stop
+  while(i < 3 && word.length-hints.length > 0){
+    hint = word[Math.floor(Math.random()*word.length)].toLowerCase();
     if(hints.indexOf(hint) === -1) {
       hints.push(hint);
       i++;
     }
   }
 
-  return hints;
+  return hints.join(' , ');
 };
 

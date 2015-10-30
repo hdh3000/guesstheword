@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8">
   <title>Levenshtein Guesser</title>
-
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="./words.js"></script>
-  <script src="./utilities.js"></script>
-  <script src="./distanceCalculator.js"></script>
-  <script src="./app.js"></script>
-
+  <script src="./scripts/words.js"></script>
+  <script src="./scripts/utilities.js"></script>
+  <script src="./scripts/distanceCalculator.js"></script>
+  <script src="./scripts/app.js"></script>
 </head>
+
 <body>
 <div class="container">
 <h1>Welcome to the Levenshtein Distance Game</h1>
 
 <div class = 'game-description'>
-  <span>Guess the word if you can!</span>
-  <span class= 'detail'>Edit distance is calculated using 
-    <a target="_blank" href="https://en.wikipedia.org/wiki/Levenshtein_distance">
+  <span>Guess the mystery word if you can!</span>
+  <span class= 'detail'>Distance is the number of edits it would take to make your guess the mystery word </span>
+  <span class= 'detail example'> (e.g. 'cat' and 'rat' are 1 edit apart, while 'cat' and 'rats' are 2 edits apart) </span>
+  <span class= 'detail'> Game inspired by
+    <a target="_blank" href="https://en.wikipedia.org/wiki/Levenshtein_distance#Example">
       Levenshtein Distance
     </a>
   </span>
@@ -35,7 +36,7 @@
   </div>
   <div id="game-loss" style="display:none"></div>
   <div id="game-win" style="display:none"></div>
-  <button id="new-game">new game</button>
+  <button id="new-game" style="display:none">new game</button>
 </div>
 
 <table id="guesses-table">
@@ -48,7 +49,6 @@
   <tbody>
   </tbody>
 </table>
-
 </div>
 <script>
   $(function(){ 

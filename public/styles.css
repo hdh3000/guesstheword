@@ -20,7 +20,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font: inherit; 
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -58,7 +58,7 @@ h1, .game-description, .game-play {
   margin-top: 20px
 }
 h1 {
-  font-size:30px;
+  font-size:25px;
   margin-bottom: 5px;
   margin-top: 10px;
   
@@ -66,11 +66,12 @@ h1 {
 
 .game-description {
   margin-top: 10px;
+  margin-bottom: 5px
 }
 .game-description span {
   display: block;
   padding: 3px;
-  font-size: 20px;
+  font-size: 15px;
   font-style: italic;
 }
 .game-description .detail {
@@ -79,8 +80,6 @@ h1 {
   font-size: 10px;
   color:grey;
   font-style: italic;
-  margin-top: 5px;
-  margin-bottom: 10px
 }
 
 table {
@@ -95,6 +94,7 @@ table .turn {
   font-size: 12px;
   padding: 1px;
   margin: 0;
+  font-style: normal;
 }
 
 th, tr, td {
@@ -104,24 +104,42 @@ th, tr, td {
   padding-bottom: 5px;
 }
 
+th {
+  color: grey;
+}
+
 button {
   padding-left:4px;
   padding-right:4px;
   margin:4px;
-  /*color: #28aadc;*/
+  width: 60px;
   background-color: #fff;
   border: 2px solid green;
   border-radius: 4px;
+  cursor: pointer; 
+  cursor: hand;
 }
 
+button:hover {
+  background-color: green;
+  color: white;
+}
+
+
 input {
+  margin: auto;
+  display: block;
   padding-left:4px;
   padding-right:4px;
-  margin:4px;
-  margin-right:10px;
   /*color: #28aadc;*/
   background-color: #fff;
   border: 2px solid grey;
+  border-radius: 4px;
+}
+
+input:focus{
+  outline: none;
+  border: 2px solid #2D3496;
   border-radius: 4px;
 }
 
@@ -131,19 +149,22 @@ input {
 
 #game-win .answear {
   color:green;
+  display: block;
 }
 
 #game-loss .answear {
   color:red;
+  display:block;
 }
-
 
 .hints {
   color: green;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-style: normal;
 }
 
 #new-game {
-  margin-top: 15px
+  margin-top: 15px:;
+  width: 80px;
 }
-
