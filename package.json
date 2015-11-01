@@ -16,10 +16,10 @@
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
-    "gulp-minify": "0.0.5"
-  },
-  "devDependencies": {
+    "gulp-minify": "0.0.5",
     "gulp-minify-html": "^1.0.4",
     "gulp-purifycss": "^0.2.0"
+  },
+  "devDependencies": {
   }
 }
