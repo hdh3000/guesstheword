@@ -35,39 +35,44 @@ var gameStart = function () {
 };
 
 var app = function(){
-    getGuess = gameStart();
-    $('#game > input').focus();
-    $('.hints').append(hints);
+  // keep DOM traversals down
+  var $guess = $("#guess");
+  setNewGameState();
 
-    //guess
-    $( "#guess" ).on('click', function(e) {
-      handleGuess($('#game > input').val());
-    });
+  //guess
+  $( "#guess" ).on('click', function(e) {
+    handleGuess($('#game > input').val());
+  });
 
-    $(document).keydown(function(e){
-      if (e.which == 13){
-        $("#guess").click();
+  //give up
+  $( "#give-up" ).on('click', function(e) {
+    handleGiveUp();
+  });
+
+  //new game
+  $( "#new-game" ).on('click', function(e) {
+    setNewGameState();
+  });
+
+  //arrow guess nav and enter functionality
+  $(document).keydown(function(e){
+
+    if (e.which == 13){
+      if($guess.is(':visible')){
+        $guess.click();
+      } else if ($('#new-game').is(':visible')){
+        $('#new-game').click();
       }
-      if (e.which == 38){
-        e.preventDefault();
-        getPrevGuess();
-      }
-      if (e.which == 40){
-        e.preventDefault();
-        getNextGuess();
-      }
-    });
-
-    //give up
-    $( "#give-up" ).on('click', function(e) {
-      handleGiveUp();
-    });
-
-    //new game
-    $( "#new-game" ).on('click', function(e) {
-      location.reload();
-    });
-
+    }
+    if (e.which == 38){
+      e.preventDefault();
+      getPrevGuess();
+    }
+    if (e.which == 40){
+      e.preventDefault();
+      getNextGuess();
+    }
+  });
 };
 
 

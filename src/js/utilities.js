@@ -23,6 +23,28 @@ var handleGuess = function(guess) {
   $('#game > input').val('').focus();
 };
 
+var setNewGameState = function() {
+  //reset state variables
+  getGuess = gameStart();
+  guessStackPointer = 0;
+  guessStack = [];
+
+  //set html back to blank
+  $('.hints').html('');
+  $('.hints').append(hints);
+  $('#turn').html("0");
+  $('#guesses-table > tbody:last').html('');
+  $('#game > input').val('');
+
+  $('#game').show();
+  $('#game-loss').hide();
+  $('#game-win').hide();
+  $('#new-game').hide();
+  
+  //set focus last
+  $('#game > input').focus();
+};
+
 var handleGiveUp = function() {
   var target = getGuess('');
   $('#game-loss').html("<span class='game-over'>You quit! The winning word was: <span class='answear'>" + target.target + "</span> </span>");
